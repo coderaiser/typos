@@ -1,0 +1,73 @@
+{
+  "name": "typos",
+  "version": "1.0.0",
+  "description": "calculate typos count on text writing",
+  "main": "lib/typos.js",
+  "babel": {
+    "presets": [
+      "es2015-rollup"
+    ],
+    "plugins": [
+      "transform-object-assign"
+    ]
+  },
+  "scripts": {
+    "build:server": "babel lib -d legacy/lib",
+    "wisdom": "npm run build",
+    "build": "redrun build:* legacy:*",
+    "legacy:index": "echo \"module.exports = require('./lib/typos');\" > legacy/index.js",
+    "lint:eslint": "eslint lib",
+    "lint": "redrun lint:*",
+    "test": "tape 'test/**/*.js'",
+    "coverage": "nyc npm test",
+    "report": "nyc report --reporter=text-lcov | coveralls",
+    "watcher": "nodemon -w test -w lib --exec",
+    "watch:test": "npm run watcher -- npm test",
+    "watch:lint": "npm run watcher -- npm run lint",
+    "watch:coverage": "npm run watcher -- npm run coverage",
+    "build:client": "rollup -c .rollup.js -m -f umd -o dist/typos.min.js",
+    "watch:client": "npm run build:client:shake -- -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coderaiser/typos"
+  },
+  "keywords": [
+    "extract",
+    "bzip2",
+    "bz2",
+    "pack",
+    "tar"
+  ],
+  "author": "coderaiser <mnemonic.enemy@gmail.com> (http://coderaiser.github.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coderaiser/typos/issues"
+  },
+  "homepage": "https://github.com/coderaiser/typos",
+  "dependencies": {
+    "emitify": "^2.1.1",
+    "inherits": "^2.0.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "coveralls": "^2.11.14",
+    "eslint": "^3.9.0",
+    "nodemon": "^1.11.0",
+    "nyc": "^10.0.0",
+    "redrun": "^5.9.2",
+    "rollup": "^0.41.6",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-filesize": "^1.0.0",
+    "rollup-plugin-json": "^2.0.2",
+    "rollup-plugin-node-builtins": "^2.1.0",
+    "rollup-plugin-node-globals": "^1.0.9",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-watch": "^3.2.2",
+    "tape": "^4.6.2"
+  }
+}
