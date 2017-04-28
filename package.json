@@ -26,7 +26,7 @@
     "watch:lint": "npm run watcher -- npm run lint",
     "watch:coverage": "npm run watcher -- npm run coverage",
     "build:client": "rollup -c .rollup.js -m -f umd -o dist/typos.min.js",
-    "watch:client": "npm run build:client:shake -- -w"
+    "watch:client": "npm run build:client -- -w"
   },
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
   },
   "homepage": "https://github.com/coderaiser/typos",
   "dependencies": {
-    "emitify": "^2.1.1",
+    "emitify": "^3.0.1",
     "inherits": "^2.0.3"
   },
   "devDependencies": {
