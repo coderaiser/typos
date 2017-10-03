@@ -6,8 +6,8 @@ import filesize from 'rollup-plugin-filesize';
 import builtins from 'rollup-plugin-node-builtins';
 
 export default {
-    entry: 'lib/typos.js',
-    moduleName: 'typos',
+    input: 'lib/typos.js',
+    name: 'typos',
     plugins: [
         commonjs({
             include: [
