@@ -35,13 +35,13 @@ test('typos: add: error', (t) => {
 });
 
 test('typos: add: end', (t) => {
-    const text = 'x';
+    const text = 'xy';
     const typo = typos(text);
     
     typo.on('end', (result) => {
         const store = {
             errorsCount: 0,
-            length: 1,
+            length: 2,
         };
         
         t.deepEqual(result, store, 'should be equal');
@@ -49,16 +49,17 @@ test('typos: add: end', (t) => {
     });
     
     typo.add('x');
+    typo.add('y');
 });
 
 test('typos: add: add', (t) => {
     const text = 'x';
     const typo = typos(text);
     
-    typo.on('add', (result) => {
+    typo.once('add', (result) => {
         const store = {
             cursor: 0,
-            symbol: 'x'
+            symbol: 'x',
         };
         
         t.deepEqual(result, store, 'should be equal');
