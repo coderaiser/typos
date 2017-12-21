@@ -49,14 +49,6 @@ text.split('')
     .forEach(add);
 ```
 
-## Environments
-
-In old `node.js` environments that not fully supports `es2015`, `typos` could be used with:
-
-```js
-var typos = require('typos/legacy');
-```
-
 ## Usage in Browser
 
 Add script tag to use minified version of `typos`.
